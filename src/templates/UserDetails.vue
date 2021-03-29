@@ -86,7 +86,7 @@ query ($login: String ) {
 export default {
   name: "UserDetails",
   metaInfo: {
-    title: this.user.name,
+    title: 'UserDetails',
   },
   computed: {
     user () {
