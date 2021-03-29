@@ -20,6 +20,9 @@
 </template>
 <script>
 export default {
+  metaInfo: {
+    title: "config",
+  },
   data() {
     return {
       text: "",

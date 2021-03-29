@@ -26,7 +26,7 @@ module.exports = function (api) {
     const user_collection = actions.addCollection('User')
     const users = []
     // 添加登录用户数据
-    const { data: userData } = await axios.get(`${baseUrl}/users/${githubUsername}${token}`)
+    const { data: userData } = await axios.get(`${baseUrl}/users/${githubUsername}`)
     users.push({
       id: userData.id,
       name: userData.name,
@@ -42,10 +42,10 @@ module.exports = function (api) {
 
     // 创建用户文章数据集合  获取用户文章
     const userPost_collection = actions.addCollection('UserPost')
-    const { data: userPost } = await axios.get(`${baseUrl}/users/${githubUsername}/gists${token}`)
+    const { data: userPost } = await axios.get(`${baseUrl}/users/${githubUsername}/gists`)
     userPost.reverse()
     for (let item of userPost) {
-      let { data: detailsPost } = await axios.get(`${baseUrl}/gists/${item.id}${token}`)
+      let { data: detailsPost } = await axios.get(`${baseUrl}/gists/${item.id}`)
       const key = Object.keys(detailsPost.files)[0]
       // console.log(detailsPost.files[key].content);
       userPost_collection.addNode({
@@ -60,10 +60,10 @@ module.exports = function (api) {
 
     // 创建用户开源项目的数据集合  获取用户开源数据
     const userProject_collection = actions.addCollection('UserProject')
-    const { data: userProject } = await axios.get(`${baseUrl}/users/${githubUsername}/repos${token}`);
+    const { data: userProject } = await axios.get(`${baseUrl}/users/${githubUsername}/repos`);
     userProject.reverse()
     for (let item of userProject) {
-      let { data: detailsProject } = await axios.get(`${baseUrl}/repos/${githubUsername}/${item.name}/contents/README.md${token}`)
+      let { data: detailsProject } = await axios.get(`${baseUrl}/repos/${githubUsername}/${item.name}/contents/README.md`)
       userProject_collection.addNode({
         id: item.id,
         name: item.name,
@@ -82,11 +82,11 @@ module.exports = function (api) {
 
     // 创建用户追随者的数据集合  获取关注用户的人的数据
     const follower_collection = actions.addCollection('Follower')
-    const { data: followers } = await axios.get(`${baseUrl}/users/${githubUsername}/followers${token}`)
+    const { data: followers } = await axios.get(`${baseUrl}/users/${githubUsername}/followers`)
     for (let item of followers) {
       follower_collection.addNode(item)
       // 添加用户数据
-      const { data: itemData } = await axios.get(`${baseUrl}/users/${item.login}${token}`)
+      const { data: itemData } = await axios.get(`${baseUrl}/users/${item.login}`)
       users.push({
         id: itemData.id,
         name: itemData.name,
@@ -103,11 +103,11 @@ module.exports = function (api) {
 
     // 创建用户关注者的数据集合  获取用户关注的人的数据
     const following_collection = actions.addCollection('Following')
-    const { data: following } = await axios.get(`${baseUrl}/users/${githubUsername}/following${token}`)
+    const { data: following } = await axios.get(`${baseUrl}/users/${githubUsername}/following`)
     for (let item of following) {
       following_collection.addNode(item)
       // 添加用户数据
-      const { data: itemData } = await axios.get(`${baseUrl}/users/${item.login}${token}`)
+      const { data: itemData } = await axios.get(`${baseUrl}/users/${item.login}`)
       users.push({
         id: itemData.id,
         name: itemData.name,

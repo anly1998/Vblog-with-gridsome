@@ -36,12 +36,12 @@
             <el-row>
               <el-col :span="16">
                 <span>
-                  <a
+                  <g-link
                     style="text-decoration: none; cursor: pointer"
-                    @click="goDetails(item.node.name)"
+                    :to="item.node.path"
                   >
                     <i class="el-icon-service"></i>&nbsp;&nbsp; {{ item.node.name }}
-                  </a>
+                  </g-link>
                 </span>
               </el-col>
               <el-col :span="8">
@@ -163,15 +163,18 @@ query {
         created_at
         updated_at
         content
+        path
       }
     }
   }
 }
 </page-query>
 <script>
-// import { mapGetters } from "vuex";
-// import ProjectApi from "@/api/project";
 export default {
+  name: 'Project',
+  metaInfo: {
+    title: "project",
+  },
   data() {
     return {
       query: {
@@ -193,9 +196,6 @@ export default {
       this.projects = this.$page.allUserProject.edges.filter((item) => {
         return item.node.name.includes(this.searchKey);
       });
-    },
-    goDetails(name) {
-      this.$router.push("/project/details/" + name);
     },
     goGithub(url) {
       // this.$router.replace(url);

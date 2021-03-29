@@ -1,4 +1,5 @@
 *.log
+.history
 .cache
 .DS_Store
 src/.temp

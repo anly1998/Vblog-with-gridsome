@@ -60,13 +60,7 @@
 
     <!-- Header Nav -->
     <div
-      style="
-        position: relative;
-        z-index: 2;
-        margin: auto;
-        margin-top: -30px;
-        width: 64rem;
-      "
+      style="position: relative; z-index: 2; margin: auto; margin-top: -30px; width: 64rem;"
     >
       <el-card shadow="never" :body-style="{ padding: '0px' }">
         <el-row>

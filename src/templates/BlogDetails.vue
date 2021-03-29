@@ -78,6 +78,9 @@ import MarkDownIt from "markdown-it";
 import Cookie from 'js-cookie';
 const md = new MarkDownIt();
 export default {
+  metaInfo: {
+    title: 'BlogDetail',
+  },
   data() {
     return {
       blog: {},

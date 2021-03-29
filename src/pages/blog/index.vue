@@ -135,6 +135,9 @@ import axios from 'axios';
 import Cookie from 'js-cookie';
 export default {
   name: "BlogIndex",
+  metaInfo: {
+    title: "blog",
+  },
   data() {
     return {
       searchKey: "",

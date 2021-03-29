@@ -84,7 +84,10 @@ query ($login: String ) {
 
 <script>
 export default {
-  name: "Details",
+  name: "UserDetails",
+  metaInfo: {
+    title: this.user.name,
+  },
   computed: {
     user () {
       return this.$page.allUser.edges[0].node

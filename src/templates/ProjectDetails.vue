@@ -134,6 +134,9 @@ query($name: String) {
 </page-query>
 <script>
 export default {
+  metaInfo: {
+    title: 'ProjectDetail',
+  },
   data() {
     return {};
   },

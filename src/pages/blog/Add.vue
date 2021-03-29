@@ -48,6 +48,10 @@ import TokenDialog from "~/components/TokenDialog";
 import Cookie from "js-cookie";
 import axios from "axios";
 export default {
+  name: 'AddBlog',
+  metaInfo: {
+    title: "addBlog",
+  },
   components: {
     TokenDialog,
   },

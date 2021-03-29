@@ -50,6 +50,10 @@ import { fetch } from "gridsome";
 import Cookie from "js-cookie";
 
 export default {
+  name: 'EditBlog',
+  metaInfo: {
+    title: "editBlog",
+  },
   components: {
     TokenDialog,
   },

@@ -110,6 +110,10 @@
 </template>
 <script>
 export default {
+  name: 'Help',
+  metaInfo: {
+    title: "help",
+  },
   data() {
     return {
       active: "deploy",
